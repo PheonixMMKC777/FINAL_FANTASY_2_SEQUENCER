@@ -81,6 +81,66 @@ namespace FINAL_FANTASY_2_SEQUENCER
             if (this.Tracklist.SelectedIndex == 27) { PRG.ROMOffset = 0x36cd7; PRG.HeaderType = "SQ2"; }
             if (this.Tracklist.SelectedIndex == 28) { PRG.ROMOffset = 0x36d1b; PRG.HeaderType = "TRI"; }
 
+            //Battle
+            if (this.Tracklist.SelectedIndex == 29) { PRG.ROMOffset = 0x36D70; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 30) { PRG.ROMOffset = 0x36e6e; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 31) { PRG.ROMOffset = 0x36f63; PRG.HeaderType = "TRI"; }
+
+            //Boss
+            if (this.Tracklist.SelectedIndex == 32) { PRG.ROMOffset = 0x37046; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 33) { PRG.ROMOffset = 0x371D6; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 34) { PRG.ROMOffset = 0x373b7; PRG.HeaderType = "TRI"; }
+
+            //Vioctry
+            if (this.Tracklist.SelectedIndex == 35) { PRG.ROMOffset = 0x37540; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 36) { PRG.ROMOffset = 0x375a6; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 37) { PRG.ROMOffset = 0x37605; PRG.HeaderType = "TRI"; }
+
+            //Game Over
+            if (this.Tracklist.SelectedIndex == 38) { PRG.ROMOffset = 0x37660; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 39) { PRG.ROMOffset = 0x37688; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 40) { PRG.ROMOffset = 0x376D4; PRG.HeaderType = "TRI"; }
+
+            //Princess 
+            if (this.Tracklist.SelectedIndex == 41) { PRG.ROMOffset = 0x376eb; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 42) { PRG.ROMOffset = 0x37688; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 43) { PRG.ROMOffset = 0x376d4; PRG.HeaderType = "TRI"; }
+
+            //Revival
+            if (this.Tracklist.SelectedIndex == 44) { PRG.ROMOffset = 0x37763; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 45) { PRG.ROMOffset = 0x37782; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 46) { PRG.ROMOffset = 0x3778e; PRG.HeaderType = "TRI"; }
+
+            //Reunion
+            if (this.Tracklist.SelectedIndex == 47) { PRG.ROMOffset = 0x3779b; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 48) { PRG.ROMOffset = 0x377c1; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 49) { PRG.ROMOffset = 0x37826; PRG.HeaderType = "TRI"; }
+
+            //ESCAPE!
+            if (this.Tracklist.SelectedIndex == 50) { PRG.ROMOffset = 0x3783c; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 51) { PRG.ROMOffset = 0x37870; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 52) { PRG.ROMOffset = 0x37884; PRG.HeaderType = "TRI"; }
+
+            //Emporer Rebirth 
+            if (this.Tracklist.SelectedIndex == 53) { PRG.ROMOffset = 0x37996; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 54) { PRG.ROMOffset = 0x379c0; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 55) { PRG.ROMOffset = 0x379dc; PRG.HeaderType = "TRI"; }
+
+            //Finale
+            if (this.Tracklist.SelectedIndex == 56) { PRG.ROMOffset = 0x379f7; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 57) { PRG.ROMOffset = 0x37b4d; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 58) { PRG.ROMOffset = 0x37c88; PRG.HeaderType = "TRI"; }
+
+            //Chocobo
+            if (this.Tracklist.SelectedIndex == 59) { PRG.ROMOffset = 0x35f9d; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 60) { PRG.ROMOffset = 0x35fdc; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 61) { PRG.ROMOffset = 0x35ff1; PRG.HeaderType = "TRI"; }
+
+            //Waltz!
+            if (this.Tracklist.SelectedIndex == 62) { PRG.ROMOffset = 0x3783c; PRG.HeaderType = "SQ1"; }
+            if (this.Tracklist.SelectedIndex == 63) { PRG.ROMOffset = 0x37870; PRG.HeaderType = "SQ2"; }
+            if (this.Tracklist.SelectedIndex == 64) { PRG.ROMOffset = 0x37884; PRG.HeaderType = "TRI"; }
+
             //configure SEQ Index for headers
             if (PRG.HeaderType == "SQ1") { PRG.SEQIndex = 8; }
             if (PRG.HeaderType == "SQ2" || PRG.HeaderType == "TRI") { PRG.SEQIndex = 6; }

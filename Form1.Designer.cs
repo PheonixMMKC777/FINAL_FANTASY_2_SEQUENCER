@@ -212,7 +212,43 @@ namespace FINAL_FANTASY_2_SEQUENCER
             "Town TRI",
             "Rebel Army SQ1",
             "Rebel Army SQ2",
-            "Rebel Army TRI"});
+            "Rebel Army TRI",
+            "Battle Theme SQ1",
+            "Battle Theme SQ2",
+            "Battle Theme TRI",
+            "Boss Theme SQ1",
+            "Boss Theme SQ2",
+            "Boss Theme TRI",
+            "Victory Theme SQ1",
+            "Victory Theme SQ2",
+            "Victory Theme TRI",
+            "Game Over SQ1",
+            "Game Over SQ2",
+            "Game Over TRI",
+            "Princess Theme SQ1",
+            "Princess Theme SQ2",
+            "Princess Theme TRI",
+            "Revival Room SQ1",
+            "Revival Room SQ2",
+            "Revival Room TRI",
+            "Reunion Theme SQ1",
+            "Reunion Theme SQ2",
+            "Reunion Theme TRI",
+            "Escape Theme SQ1",
+            "Escape Theme SQ2",
+            "Escape Theme TRI",
+            "Emporer Rebirth SQ1",
+            "Emporer Rebirth SQ2",
+            "Emporere Rebirth TRI",
+            "Finale SQ1",
+            "Finale SQ2",
+            "Finale TRI",
+            "Chocobo Theme SQ1",
+            "Chocobo Theme SQ2",
+            "Chocobo Theme TRI",
+            "Waltz SQ1",
+            "Waltz SQ2",
+            "Waltz TRI"});
             this.Tracklist.Location = new System.Drawing.Point(12, 60);
             this.Tracklist.Name = "Tracklist";
             this.Tracklist.Size = new System.Drawing.Size(140, 22);
@@ -262,28 +298,28 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Open";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // SaveToRomToolStripMenuItem
             // 
             this.SaveToRomToolStripMenuItem.Name = "SaveToRomToolStripMenuItem";
-            this.SaveToRomToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.SaveToRomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveToRomToolStripMenuItem.Text = "Save To ROM";
             this.SaveToRomToolStripMenuItem.Click += new System.EventHandler(this.SaveToRomToolStripMenuItem_Click);
             // 
             // SaveToBinToolStripMenuItem
             // 
             this.SaveToBinToolStripMenuItem.Name = "SaveToBinToolStripMenuItem";
-            this.SaveToBinToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.SaveToBinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveToBinToolStripMenuItem.Text = "Save to BIN";
             this.SaveToBinToolStripMenuItem.Click += new System.EventHandler(this.SaveToBinToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
