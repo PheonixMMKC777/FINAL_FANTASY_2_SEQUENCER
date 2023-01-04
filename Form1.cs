@@ -94,6 +94,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             DecodeFF2Music(); // call length "finder" and put in MusicSizeL
             this.Invalidate();
         }
+
         private void EnableFormOptions()
         {
 
@@ -101,6 +102,8 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.AddNoteBTN.Enabled = true;
             this.AddLoopBTN.Enabled = true;
             this.JumpBoxBTN.Enabled = true;
+            this.OddJumpButton.Enabled = true;
+            this.EndLoopButton.Enabled = true;
             this.UpdateHeaderButton.Enabled = true;
 
 
@@ -286,12 +289,24 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // add note data
             var CurrentSeqInt = PRG.Hibyte + PRG.Lobyte;
             
+            // convert to byte and add to Byte Array
             PRG.CurrentSEQByte = Convert.ToByte(CurrentSeqInt);
-            PRG.SequenceData[PRG.SequenceDataOffset] = PRG.CurrentSEQByte; 
+            PRG.SequenceData[PRG.SequenceDataOffset] = PRG.CurrentSEQByte;
 
+            // Add to String Represntation of Byte array
             this.NewSongDataL.Text += PRG.CurrentSEQByte.ToString("x2") + " ";
+            PRG.SEQTextIndexCounter++;
+
+            // Formatting for String Bar to look nice
+            if (PRG.SEQTextIndexCounter >= 15)
+            {
+                PRG.SEQTextIndexCounter = 0;
+                this.NewSongDataL.Text += "\n";
+            }
+
             PRG.SequenceDataOffset++;
             PRG.SEQIndex++;
+            
             this.UsedBytesL.Text = ("Used: " + Convert.ToString(PRG.SEQIndex));
         }
 
@@ -375,11 +390,6 @@ namespace FINAL_FANTASY_2_SEQUENCER
             if (this.Octavelistbox.SelectedIndex == 5) { PRG.CurrentOctave = 0xF5; }
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void SaveToRomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -461,11 +471,125 @@ namespace FINAL_FANTASY_2_SEQUENCER
                 + "Justin Olbrantz's FF2 Music Docs " + "\n"
                 + "Datacrystal's FF2 ROM Map");
             this.CreditsLabel.Location = new Point(10, 20);
-            this.CreditsLabel.Size = new Size(180, 80);
-            this.CreditsLabel.TextAlign = ContentAlignment.MiddleCenter;
 
             this.CreditsWin.Controls.Add(CreditsLabel);
             this.CreditsWin.ShowDialog();
+        }
+
+        private void JumpBoxBTN_Click(object sender, EventArgs e)
+        {
+            // this is a FORCED JUMP!
+            PRG.OddJumpType = false;
+            PRG.RegularJumpType = false;
+            AddJumpNote();
+        }
+
+
+        public void AddJumpNote()
+        {
+            
+
+            // convert to byte and add to Byte Array
+            PRG.SequenceData [PRG.SequenceDataOffset] = 0xFE; //JMP Byte
+            PRG.SequenceDataOffset++;
+
+            string JMPDummy = this.JumpBox.Text;
+            var JMPHi = JMPDummy.Substring(0, 2);
+            var JMPLo = JMPDummy.Substring(2, 2); 
+            this.Text = (JMPHi + " " + JMPLo);
+
+            // Little ENDIAN BS
+            PRG.SequenceData[PRG.SequenceDataOffset] = Convert.ToByte(JMPHi,16); //JMP Hi Byte
+            PRG.SequenceDataOffset++;
+            PRG.SequenceData[PRG.SequenceDataOffset] = Convert.ToByte(JMPLo,16); //JMP Byte
+            PRG.SequenceDataOffset++;
+
+            PRG.SEQIndex = PRG.SEQIndex + 3;
+
+            // DO THIS THRICE //////////////////////////////////////
+            // Add to String Represntation of Byte array
+
+            if (PRG.OddJumpType == false && PRG.RegularJumpType == false)
+            {
+                this.NewSongDataL.Text += 0xFE.ToString("x2") + " ";
+            }
+            if (PRG.OddJumpType == true)
+            {
+                this.NewSongDataL.Text += 0xFD.ToString("x2") + " ";
+            }
+            if (PRG.RegularJumpType == true)
+            {
+                this.NewSongDataL.Text += 0xFC.ToString("x2") + " ";
+            }
+            PRG.SEQTextIndexCounter++;
+
+            // Formatting for String Bar to look nice
+            if (PRG.SEQTextIndexCounter >= 15)
+            {
+                PRG.SEQTextIndexCounter = 0;
+                this.NewSongDataL.Text += "\n";
+            }
+
+            //////////////////////////////////////////////////////
+            // Add to String Represntation of Byte array
+            this.NewSongDataL.Text += JMPHi + " ";
+            PRG.SEQTextIndexCounter++;
+
+            // Formatting for String Bar to look nice
+            if (PRG.SEQTextIndexCounter >= 15)
+            {
+                 PRG.SEQTextIndexCounter = 0;
+                 this.NewSongDataL.Text += "\n";
+            }
+
+            ///////////////////////////////////////////////////////
+            // Add to String Represntation of Byte array
+            this.NewSongDataL.Text += JMPLo + " ";
+            PRG.SEQTextIndexCounter++;
+
+            // Formatting for String Bar to look nice
+            if (PRG.SEQTextIndexCounter >= 15)
+            {
+                 PRG.SEQTextIndexCounter = 0;
+                 this.NewSongDataL.Text += "\n";
+            }
+
+            PRG.OddJumpType = false;
+            PRG.RegularJumpType = false; // Clear jump flags
+
+            this.UsedBytesL.Text = ("Used: " + Convert.ToString(PRG.SEQIndex));
+        }
+
+
+        private void EndLoopButton_Click(object sender, EventArgs e)
+        {
+            PRG.RegularJumpType = true;
+            PRG.OddJumpType = false;
+            AddJumpNote();
+        }
+
+        private void OddJumpButton_Click(object sender, EventArgs e)
+        {
+            PRG.RegularJumpType = false;
+            PRG.OddJumpType = true;
+            AddJumpNote();
+        }
+
+        private void jumpsLoopsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.JumpEXPWin.Text = "Jumps Explained";
+            
+            this.CreditsLabel.Text = ( 
+                "Looping works by setting a loop counter and jumping to a RAM Address when said counter hits a certain number. \n" +
+                "There are 3 Jump options. Jump uncondionally, Jump when counter is 0, and Jump when counter is an odd number. \n" +
+                "The Sound data has a Weirdly styled Address you jump too, and it is LITTLE ENDIAN! Each song has a different offset.\n" +
+                "To Find the \"Offset\", Take the ROM Address of the track and add 4 to the Hi Nibble of the First byte,\n" +
+                "And then Subtract 1 from Hi Nibble of the Second Byte to find the \"Offset\". REMEMBER IT IS HEX NUMBERS!"
+              );
+            this.CreditsLabel.Location = new Point(10, 20);
+
+            this.JumpEXPWin.Controls.Add(CreditsLabel);
+            this.JumpEXPWin.ShowDialog();
         }
     }
 }
