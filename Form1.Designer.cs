@@ -1,7 +1,5 @@
-﻿using System;
+﻿
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Security.Policy;
 using System.Text;
 
 namespace FINAL_FANTASY_2_SEQUENCER
@@ -11,13 +9,13 @@ namespace FINAL_FANTASY_2_SEQUENCER
     {
         public static StreamReader ROMPath;
         public static byte[] ROM;
-        public static byte[] SequenceData;
-        public static int SequenceDataOffset = 0;
-        public static int ROMOffset = 0x0;
+        public static byte[] SequenceData; //the barr array repping the seqeunce
+        public static int SequenceDataOffset = 0; // the offset for above
+        public static int ROMOffset = 0x0; // offset of track in rom
         public static ASCIIEncoding Asen = new ASCIIEncoding();
         public static byte Hibyte;
         public static byte Lobyte;
-        public static byte CurrentSEQByte;
+        public static byte CurrentSEQByte; // the current byte in the seq
         public static string HeaderString;
         public static bool OddJumpType = false;
         public static bool RegularJumpType = false;
@@ -280,7 +278,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(903, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(837, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -313,7 +311,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // 
             this.SaveToBinToolStripMenuItem.Name = "SaveToBinToolStripMenuItem";
             this.SaveToBinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SaveToBinToolStripMenuItem.Text = "Save to BIN";
+            this.SaveToBinToolStripMenuItem.Text = "Save to BIN *";
             this.SaveToBinToolStripMenuItem.Click += new System.EventHandler(this.SaveToBinToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
@@ -390,7 +388,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             "A",
             "A#",
             "B"});
-            this.NoteBox.Location = new System.Drawing.Point(705, 60);
+            this.NoteBox.Location = new System.Drawing.Point(676, 60);
             this.NoteBox.Name = "NoteBox";
             this.NoteBox.Size = new System.Drawing.Size(62, 172);
             this.NoteBox.TabIndex = 15;
@@ -407,7 +405,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             "O5",
             "O6",
             "O7"});
-            this.Octavelistbox.Location = new System.Drawing.Point(788, 60);
+            this.Octavelistbox.Location = new System.Drawing.Point(759, 60);
             this.Octavelistbox.Name = "Octavelistbox";
             this.Octavelistbox.Size = new System.Drawing.Size(59, 88);
             this.Octavelistbox.TabIndex = 16;
@@ -434,7 +432,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             "d: 32nd (3)",
             "e: Triplet 32nd (2)",
             "f: Triplet 64th (1)"});
-            this.Noteduration.Location = new System.Drawing.Point(566, 60);
+            this.Noteduration.Location = new System.Drawing.Point(537, 60);
             this.Noteduration.Name = "Noteduration";
             this.Noteduration.Size = new System.Drawing.Size(120, 228);
             this.Noteduration.TabIndex = 17;
@@ -443,9 +441,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // AddNoteBTN
             // 
             this.AddNoteBTN.Enabled = false;
-            this.AddNoteBTN.Location = new System.Drawing.Point(453, 62);
+            this.AddNoteBTN.Location = new System.Drawing.Point(444, 60);
             this.AddNoteBTN.Name = "AddNoteBTN";
-            this.AddNoteBTN.Size = new System.Drawing.Size(98, 58);
+            this.AddNoteBTN.Size = new System.Drawing.Size(73, 58);
             this.AddNoteBTN.TabIndex = 18;
             this.AddNoteBTN.Text = "Add Note";
             this.AddNoteBTN.UseVisualStyleBackColor = true;
@@ -454,9 +452,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // AddRestBTN
             // 
             this.AddRestBTN.Enabled = false;
-            this.AddRestBTN.Location = new System.Drawing.Point(453, 137);
+            this.AddRestBTN.Location = new System.Drawing.Point(444, 135);
             this.AddRestBTN.Name = "AddRestBTN";
-            this.AddRestBTN.Size = new System.Drawing.Size(98, 59);
+            this.AddRestBTN.Size = new System.Drawing.Size(73, 59);
             this.AddRestBTN.TabIndex = 19;
             this.AddRestBTN.Text = "Add Rest";
             this.AddRestBTN.UseVisualStyleBackColor = true;
@@ -465,9 +463,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // AddLoopBTN
             // 
             this.AddLoopBTN.Enabled = false;
-            this.AddLoopBTN.Location = new System.Drawing.Point(791, 344);
+            this.AddLoopBTN.Location = new System.Drawing.Point(748, 346);
             this.AddLoopBTN.Name = "AddLoopBTN";
-            this.AddLoopBTN.Size = new System.Drawing.Size(70, 60);
+            this.AddLoopBTN.Size = new System.Drawing.Size(62, 60);
             this.AddLoopBTN.TabIndex = 20;
             this.AddLoopBTN.Text = "Set Loop Value";
             this.AddLoopBTN.UseVisualStyleBackColor = true;
@@ -481,7 +479,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             "Loop x3",
             "Loop x4",
             "Loop x5"});
-            this.LoopListbox.Location = new System.Drawing.Point(720, 346);
+            this.LoopListbox.Location = new System.Drawing.Point(681, 346);
             this.LoopListbox.Name = "LoopListbox";
             this.LoopListbox.Size = new System.Drawing.Size(53, 60);
             this.LoopListbox.TabIndex = 21;
@@ -526,7 +524,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // 
             // JumpBox
             // 
-            this.JumpBox.Location = new System.Drawing.Point(724, 469);
+            this.JumpBox.Location = new System.Drawing.Point(681, 471);
             this.JumpBox.Name = "JumpBox";
             this.JumpBox.Size = new System.Drawing.Size(53, 20);
             this.JumpBox.TabIndex = 26;
@@ -534,9 +532,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // JumpBoxBTN
             // 
             this.JumpBoxBTN.Enabled = false;
-            this.JumpBoxBTN.Location = new System.Drawing.Point(710, 506);
+            this.JumpBoxBTN.Location = new System.Drawing.Point(677, 508);
             this.JumpBoxBTN.Name = "JumpBoxBTN";
-            this.JumpBoxBTN.Size = new System.Drawing.Size(75, 52);
+            this.JumpBoxBTN.Size = new System.Drawing.Size(65, 52);
             this.JumpBoxBTN.TabIndex = 27;
             this.JumpBoxBTN.Text = "Jump to RAM addr";
             this.JumpBoxBTN.UseVisualStyleBackColor = true;
@@ -545,7 +543,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // JumpAddrL
             // 
             this.JumpAddrL.AutoSize = true;
-            this.JumpAddrL.Location = new System.Drawing.Point(717, 433);
+            this.JumpAddrL.Location = new System.Drawing.Point(674, 435);
             this.JumpAddrL.Name = "JumpAddrL";
             this.JumpAddrL.Size = new System.Drawing.Size(68, 28);
             this.JumpAddrL.TabIndex = 28;
@@ -554,7 +552,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(590, 43);
+            this.label1.Location = new System.Drawing.Point(561, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 14);
             this.label1.TabIndex = 29;
@@ -565,7 +563,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.UpdateHeaderButton.Enabled = false;
             this.UpdateHeaderButton.Location = new System.Drawing.Point(265, 209);
             this.UpdateHeaderButton.Name = "UpdateHeaderButton";
-            this.UpdateHeaderButton.Size = new System.Drawing.Size(102, 23);
+            this.UpdateHeaderButton.Size = new System.Drawing.Size(114, 23);
             this.UpdateHeaderButton.TabIndex = 30;
             this.UpdateHeaderButton.Text = "UpdateHeader";
             this.UpdateHeaderButton.UseVisualStyleBackColor = true;
@@ -574,7 +572,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // UsedBytesL
             // 
             this.UsedBytesL.AutoSize = true;
-            this.UsedBytesL.Location = new System.Drawing.Point(24, 170);
+            this.UsedBytesL.Location = new System.Drawing.Point(22, 170);
             this.UsedBytesL.Name = "UsedBytesL";
             this.UsedBytesL.Size = new System.Drawing.Size(35, 14);
             this.UsedBytesL.TabIndex = 31;
@@ -628,9 +626,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // OddJumpButton
             // 
             this.OddJumpButton.Enabled = false;
-            this.OddJumpButton.Location = new System.Drawing.Point(791, 506);
+            this.OddJumpButton.Location = new System.Drawing.Point(748, 508);
             this.OddJumpButton.Name = "OddJumpButton";
-            this.OddJumpButton.Size = new System.Drawing.Size(75, 52);
+            this.OddJumpButton.Size = new System.Drawing.Size(70, 52);
             this.OddJumpButton.TabIndex = 34;
             this.OddJumpButton.Text = "Jump on Odd #";
             this.OddJumpButton.UseVisualStyleBackColor = true;
@@ -640,9 +638,9 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // 
             this.EndLoopButton.Enabled = false;
             this.EndLoopButton.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic);
-            this.EndLoopButton.Location = new System.Drawing.Point(791, 437);
+            this.EndLoopButton.Location = new System.Drawing.Point(748, 439);
             this.EndLoopButton.Name = "EndLoopButton";
-            this.EndLoopButton.Size = new System.Drawing.Size(75, 52);
+            this.EndLoopButton.Size = new System.Drawing.Size(70, 52);
             this.EndLoopButton.TabIndex = 35;
             this.EndLoopButton.Text = "End Loop and Jump";
             this.EndLoopButton.UseVisualStyleBackColor = true;
@@ -662,7 +660,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
-            this.ClientSize = new System.Drawing.Size(903, 577);
+            this.ClientSize = new System.Drawing.Size(837, 577);
             this.Controls.Add(this.TrackSelectLabel);
             this.Controls.Add(this.EndLoopButton);
             this.Controls.Add(this.OddJumpButton);

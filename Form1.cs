@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Threading;
+
 
 namespace FINAL_FANTASY_2_SEQUENCER
 {
@@ -470,11 +465,11 @@ namespace FINAL_FANTASY_2_SEQUENCER
 
 
             // fill msuic sequence
-            int Y = PRG.ROMOffset;
+            int Y = 0;
+
             while (X < PRG.IndexLength) 
             {
-                PRG.ROM[PRG.ROMOffset + X] = PRG.SequenceData[X];
-                this.Text = ("Rom: " + PRG.ROM[PRG.ROMOffset + X] + " Seq: " + PRG.SequenceData[X]);
+                PRG.ROM[PRG.ROMOffset + X] = PRG.SequenceData[Y];
                 X++;
                 Y++;
                 
