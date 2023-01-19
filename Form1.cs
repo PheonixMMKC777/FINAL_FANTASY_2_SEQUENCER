@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace FINAL_FANTASY_2_SEQUENCER
@@ -385,6 +386,24 @@ namespace FINAL_FANTASY_2_SEQUENCER
         private void SaveToBinToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+
+            //save handler
+            this.SaveAsRom.RestoreDirectory = true;
+            this.SaveAsRom.Title = "Save BIN File...";
+            this.SaveAsRom.DefaultExt = "bin";
+            this.SaveAsRom.Filter = "BIN files (*.bin)|*bin|All files (*.*)|*.*\"";
+            this.SaveAsRom.FileName = "FF2Music.BIN";
+            this.SaveAsRom.CheckPathExists = true;
+            this.SaveAsRom.ShowDialog();
+
+
+            using (FileStream fs = File.Create(this.SaveAsRom.FileName))
+            {
+                // Add some text to file    
+               
+                fs.Write(PRG.SequenceData, 0, PRG.SequenceData.Length);
+                fs.Close();
+            }
         }
 
         
@@ -646,5 +665,21 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.JumpEXPWin.Controls.Add(CreditsLabel);
             this.JumpEXPWin.ShowDialog();
         }
+
+        private void notePitchEnvelopesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.JumpEXPWin.Text = "Envelop Addresses";
+            this.CreditsLabel.Text = (
+                " Volume Envelopes: bd04, bd15, bd26, bd37, bd43, bd6a, bd99, bdd2, be66, be87, beaf.\n" +
+                " Pitch Envelopes: bec4, bec7, becb, bedd, bee0, bee4, bef9, befb, befd.\n" +
+                " Its possible to write your own note envelops but thats beyond the scope of this Program atm..."
+                );
+            this.CreditsLabel.Location = new Point(10, 20);
+
+            this.JumpEXPWin.Controls.Add(CreditsLabel);
+            this.JumpEXPWin.ShowDialog();
+        }
+
+        
     }
 }

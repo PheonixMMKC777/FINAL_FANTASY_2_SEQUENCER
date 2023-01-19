@@ -110,6 +110,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.OddJumpButton = new System.Windows.Forms.Button();
             this.EndLoopButton = new System.Windows.Forms.Button();
             this.TrackSelectLabel = new System.Windows.Forms.Label();
+            this.notePitchEnvelopesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -296,28 +297,28 @@ namespace FINAL_FANTASY_2_SEQUENCER
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.saveToolStripMenuItem1.Text = "Open";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // SaveToRomToolStripMenuItem
             // 
             this.SaveToRomToolStripMenuItem.Name = "SaveToRomToolStripMenuItem";
-            this.SaveToRomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToRomToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.SaveToRomToolStripMenuItem.Text = "Save To ROM";
             this.SaveToRomToolStripMenuItem.Click += new System.EventHandler(this.SaveToRomToolStripMenuItem_Click);
             // 
             // SaveToBinToolStripMenuItem
             // 
             this.SaveToBinToolStripMenuItem.Name = "SaveToBinToolStripMenuItem";
-            this.SaveToBinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SaveToBinToolStripMenuItem.Text = "Save to BIN *";
+            this.SaveToBinToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.SaveToBinToolStripMenuItem.Text = "Save to BIN";
             this.SaveToBinToolStripMenuItem.Click += new System.EventHandler(this.SaveToBinToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -326,10 +327,11 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fF2DocumentsToolStripMenuItem,
             this.creditsToolStripMenuItem,
-            this.jumpsLoopsToolStripMenuItem});
+            this.jumpsLoopsToolStripMenuItem,
+            this.notePitchEnvelopesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Text = "Info/Help";
             // 
             // fF2DocumentsToolStripMenuItem
             // 
@@ -655,6 +657,13 @@ namespace FINAL_FANTASY_2_SEQUENCER
             this.TrackSelectLabel.TabIndex = 36;
             this.TrackSelectLabel.Text = "Track Select:";
             // 
+            // notePitchEnvelopesToolStripMenuItem
+            // 
+            this.notePitchEnvelopesToolStripMenuItem.Name = "notePitchEnvelopesToolStripMenuItem";
+            this.notePitchEnvelopesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.notePitchEnvelopesToolStripMenuItem.Text = "Note Envelopes";
+            this.notePitchEnvelopesToolStripMenuItem.Click += new System.EventHandler(this.notePitchEnvelopesToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -768,6 +777,7 @@ namespace FINAL_FANTASY_2_SEQUENCER
         private System.Windows.Forms.Button EndLoopButton;
         private System.Windows.Forms.ToolStripMenuItem jumpsLoopsToolStripMenuItem;
         private System.Windows.Forms.Label TrackSelectLabel;
+        private System.Windows.Forms.ToolStripMenuItem notePitchEnvelopesToolStripMenuItem;
     }
 }
 
